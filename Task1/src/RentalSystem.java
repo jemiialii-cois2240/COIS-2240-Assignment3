@@ -1,21 +1,44 @@
 // Jemima Ali
-
+import java.util.ArrayList;
 class RentalSystem {
+	
+	private ArrayList<Customer> customers = new ArrayList<>();
+	private ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+	public void addCustomer(Customer customer) {
+	    customers.add(customer);
+	}
+
+	public void addVehicle(Vehicle vehicle) {
+	    vehicles.add(vehicle);
+	}
+
+	
     private RentalHistory rentalHistory = new RentalHistory();
+    
+    private static RentalSystem instance;
 
-    public void rentVehicle(Vehicle vehicle, Customer customer, String date, double amount) {
-        RentalRecord record = new RentalRecord(vehicle, amount, "RENT");
-        rentalHistory.addRecord(record);
-    }
-
-    public void returnVehicle(Vehicle vehicle, Customer customer, String date, double extraFees) {
-        RentalRecord record = new RentalRecord(vehicle, extraFees, "RETURN");
-        rentalHistory.addRecord(record);
+    public static RentalSystem getInstance() {
+        if (instance == null) {
+            instance = new RentalSystem();
+        }
+        return instance;
     }
 
     public void displayAvailableVehicles() {
         System.out.println("Available vehicles would be listed here.");
     }
+    
+    public boolean rentVehicle(Vehicle vehicle, Customer customer, String date, double amount) {
+        // your logic...
+        return true; // or false if failed
+    }
+
+    public boolean returnVehicle(Vehicle vehicle, Customer customer, String date, double extraFees) {
+        // your logic...
+        return true; // or false if failed
+    }
+
 }
 
 // End of Task1.java

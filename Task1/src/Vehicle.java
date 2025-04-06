@@ -5,15 +5,17 @@
 //
 //
 
-import java.util.Scanner;
-
-class Vehicle {
+public class Vehicle {
     private String licencePlate;
     private String make;
     private String model;
     private int year;
 
     public Vehicle(String licencePlate, String make, String model, int year) {
+        if (licencePlate == null || !licencePlate.matches("[A-Z0-9]{6}")) {
+            throw new IllegalArgumentException("Invalid license plate.");
+        }
+
         this.licencePlate = licencePlate;
         this.make = make;
         this.model = model;
@@ -23,8 +25,6 @@ class Vehicle {
     public String getInfo() {
         return year + " " + make + " " + model + " (" + licencePlate + ")";
     }
-
-    // Getters and setters omitted for brevity
 }
 
 
