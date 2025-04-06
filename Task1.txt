@@ -1,0 +1,65 @@
+class Vehicle
+{
+  licencePlate;
+  make;
+  model;
+  year;
+  getInfo;
+}
+
+
+
+class Car
+{
+    isA Vehicle;
+int numberOfSeats;
+  getInfo;
+}
+
+class SportCar
+{
+    isA Car;
+int horsepower;
+  boolean hasTurbo;
+  getInfo;
+}
+
+class Customer
+{
+  customerId;
+  name;
+  phoneNumber;
+  toString;
+  * -- * RentalRecord;
+}
+
+class RentalRecord
+{
+  double totalAmount;
+  recordType;
+    * -- * Vehicle;
+}
+
+class RentalHistory
+{
+  addRecord;
+  getRecordHistory;
+  getRentalRecordsByCustomer;
+  getRentalRecordsByVehicle;
+  * -- * RentalRecord;
+  * -- * RentalSystem;
+}
+
+class RentalSystem
+{
+  rentVehicle;
+  returnVehicle;
+  displayAvailableVehicles;
+}
+
+class Truck
+{
+    isA Vehicle;
+double cargoCapacity;
+  getInfo;
+}
