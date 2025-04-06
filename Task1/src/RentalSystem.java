@@ -1,9 +1,13 @@
-// Jemima Ali
 import java.util.ArrayList;
 class RentalSystem {
 	
 	private ArrayList<Customer> customers = new ArrayList<>();
 	private ArrayList<Vehicle> vehicles = new ArrayList<>();
+	
+	private RentalSystem() {
+	    // Private constructor to enforce singleton
+	}
+
 
 	public void addCustomer(Customer customer) {
 	    customers.add(customer);

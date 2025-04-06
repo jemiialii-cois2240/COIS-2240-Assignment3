@@ -2,6 +2,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 
 
     public class VehicleRentalTest {
@@ -41,7 +46,20 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
             // Try returning again (should fail)
             // Same note as above — can return true if logic doesn't track rented status
         }
+        
+        @Test
+        public void testSingletonRentalSystem() throws Exception {
+            // Get the getInstance() result and check it's not null
+            RentalSystem instance1 = RentalSystem.getInstance();
+            RentalSystem instance2 = RentalSystem.getInstance();
 
+            assertNotNull(instance1);
+            assertSame(instance1, instance2); // Make sure both calls return the same instance
+
+            // Use reflection to check if constructor is private
+            Constructor<RentalSystem> constructor = RentalSystem.class.getDeclaredConstructor();
+            assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+        }
 
 }
     
